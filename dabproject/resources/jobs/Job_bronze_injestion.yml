@@ -1,0 +1,30 @@
+resources:
+  jobs:
+    Job_bronze_injestion:
+      name: Job_bronze_injestion
+      tasks:
+        - task_key: parameters
+          notebook_task:
+            notebook_path: ../../src/notebooks/databricksE2E/parameters
+            source: WORKSPACE
+          environment_key: parameters_environment
+        - task_key: bronze_injestion
+          depends_on:
+            - task_key: parameters
+          for_each_task:
+            inputs: "{{tasks.parameters.values.filenames}}"
+            task:
+              task_key: bronze_injestion_iteration
+              notebook_task:
+                notebook_path: ../../src/notebooks/databricksE2E/Bronze_Layer
+                base_parameters:
+                  file_name: "{{input}}"
+                source: WORKSPACE
+              environment_key: parameters_environment
+      queue:
+        enabled: true
+      environments:
+        - environment_key: parameters_environment
+          spec:
+            environment_version: "4"
+      performance_target: PERFORMANCE_OPTIMIZED
