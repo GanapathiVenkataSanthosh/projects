@@ -1,0 +1,12 @@
+resources:
+  pipelines:
+    pipeline_gold_products:
+      name: Gold_Products
+      libraries:
+        - notebook:
+            path: ../../src/databricksE2E/Gold_layer/Gold_Products
+      schema: gold
+      development: true
+      photon: true
+      catalog: ${var.catalog}
+      serverless: true
