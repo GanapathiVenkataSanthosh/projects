@@ -17,6 +17,10 @@ targets:
     # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
     mode: development
     default: true
+    preset:
+      name_prefix: dev_${workspace.current_user.short_name}
+      source_linked_deployment: false
+    
     workspace:
       host: https://adb-7405615211390744.4.azuredatabricks.net/
     variables:

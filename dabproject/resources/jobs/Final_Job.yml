@@ -10,28 +10,28 @@ resources:
           depends_on:
             - task_key: Bronze_Ingestion
           notebook_task:
-            notebook_path: ../../src/databricksE2E/Silver_layer/Silver_layer_customers
+            notebook_path: ../../src/notebooks/databricksE2E/Silver_layer/Silver_layer_customers
             source: WORKSPACE
           existing_cluster_id: 1221-084611-grit8v4r
         - task_key: Silver_Orders
           depends_on:
             - task_key: Bronze_Ingestion
           notebook_task:
-            notebook_path: ../../src/databricksE2E/Silver_layer/Silver_layer_Orders
+            notebook_path: ../../src/notebooks/databricksE2E/Silver_layer/Silver_layer_Orders
             source: WORKSPACE
           existing_cluster_id: 1221-084611-grit8v4r
         - task_key: Silver_Products
           depends_on:
             - task_key: Bronze_Ingestion
           notebook_task:
-            notebook_path: ../../src/databricksE2E/Silver_layer/Silver_layer_products
+            notebook_path: ../../src/notebooks/databricksE2E/Silver_layer/Silver_layer_products
             source: WORKSPACE
           existing_cluster_id: 1221-084611-grit8v4r
         - task_key: Silver_Region
           depends_on:
             - task_key: Bronze_Ingestion
           notebook_task:
-            notebook_path: ../../src/databricksE2E/Silver_layer/Silver_Layer_Region
+            notebook_path: ../../src/notebooks/databricksE2E/Silver_layer/Silver_Layer_Region
             source: WORKSPACE
           existing_cluster_id: 1221-084611-grit8v4r
         - task_key: Gold_Customers
@@ -41,7 +41,7 @@ resources:
             - task_key: Silver_Products
             - task_key: Silver_Region
           notebook_task:
-            notebook_path: ../../src/databricksE2E/Gold_layer/Gold_customers
+            notebook_path: ../../src/notebooks/databricksE2E/Gold_layer/Gold_customers
             source: WORKSPACE
           existing_cluster_id: 1221-084611-grit8v4r
         - task_key: Gold_Products
@@ -58,7 +58,7 @@ resources:
             - task_key: Gold_Customers
             - task_key: Gold_Products
           notebook_task:
-            notebook_path: ../../src/databricksE2E/Gold_layer/Gold_Orders
+            notebook_path: ../../src/notebooks/databricksE2E/Gold_layer/Gold_Orders
             source: WORKSPACE
           existing_cluster_id: 1221-084611-grit8v4r
       queue:
